@@ -1,52 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta
-            name="description"
-            content="Get started with Add-on development using JavaScript with Document Sandbox Runtime"
-        />
-        <meta name="keywords" content="Adobe, Express, Add-On, JavaScript, Document Sandbox Runtime" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Get Started</title>
-        <style>
-            .container {
-                margin: 24px;
-                display: flex;
-                flex-direction: column;
-            }
 
-            button {
-                background-color: rgb(82, 88, 228);
-                border-color: rgb(82, 88, 228);
-                border-radius: 16px;
-                border-style: solid;
-                color: rgb(255, 255, 255);
-                font-family: sans-serif;
-                height: 32px;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description"
+        content="Get started with Add-on development using JavaScript with Document Sandbox Runtime" />
+    <meta name="keywords" content="Adobe, Express, Add-On, JavaScript, Document Sandbox Runtime" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Started</title>
+    <style>
+        .container {
+            margin: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
 
-            button:disabled {
-                background-color: rgb(177, 177, 177);
-                border-color: rgb(177, 177, 177);
-            }
-
-            button:not([disabled]):hover {
-                background-color: rgb(64, 70, 202);
-                cursor: pointer;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- 
+<body>
+    <!-- 
             Please note that this document does not use the spectrum web components theme for Express.
             You may use "addOnUISdk.app.ui.theme" to get the current theme and style accordingly.
         -->
-        <div class="container">
-            <button id="createRectangle" disabled>Create Rectangle</button>
-        </div>
+    <div class="container">
+        
+    <form class="max-w-sm mx-auto">
+    <label for="country-select" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
+    <select id="country-select" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+        <option selected>Choose a country</option>
+        <option value="US">United States</option>
+        <option value="CA">Canada</option>
+        <option value="FR">France</option>
+        <option value="DE">Germany</option>
+    </select>
+    </form>
 
-        <script type="module" src="ui/config.js"></script>
-        <script type="module" src="ui/index.js"></script>
-    </body>
+
+    </div>
+
+
+    <script type="module" src="ui/config.js"></script>
+    <script type="module" src="ui/index.js"></script>
+</body>
+
 </html>

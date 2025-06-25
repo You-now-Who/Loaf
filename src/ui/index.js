@@ -1,18 +1,5 @@
 import addOnUISdk from "https://new.express.adobe.com/static/add-on-sdk/sdk.js";
 
-// function download(filename, text) {
-//   var element = document.createElement('a');
-//   element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-//   element.setAttribute('download', filename);
-
-//   element.style.display = 'none';
-//   document.body.appendChild(element);
-
-//   element.click();
-
-//   document.body.removeChild(element);
-// }
-
 async function fetchHolidays(country, year = 2025) {
   // Get the window.CONFIG.API_KEY from https://calendarific.com/
   // const response = await fetch(window.CONFIG.API_ENDPOINT + "?"  + new URLSearchParams({
@@ -32,11 +19,32 @@ async function fetchHolidays(country, year = 2025) {
   // }
 
   console.log(responseJson);
-  
+}
+
+async function fetchAndPopulateCountries() {
+  // Fetch country list from REST Countries API
+  fetch("https://restcountries.com/v3.1/all?fields=name,cca2")
+    .then((response) => response.json())
+    .then((data) => {
+      // Sort countries alphabetically by name
+      data.sort((a, b) => a.name.common.localeCompare(b.name.common));
+      const select = document.getElementById("country-select");
+      data.forEach((country) => {
+        const option = document.createElement("option");
+        option.value = country.cca2.toLowerCase();
+        option.textContent = country.name.common;
+        select.appendChild(option);
+      });
+    })
+    .catch((error) => {
+      console.error("Error fetching countries:", error);
+    });
 }
 
 addOnUISdk.ready.then(async () => {
   console.log("addOnUISdk is ready for use.");
+
+  fetchAndPopulateCountries();
 
   // Get the UI runtime.
   const { runtime } = addOnUISdk.instance;
